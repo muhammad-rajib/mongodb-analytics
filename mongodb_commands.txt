@@ -46,4 +46,4 @@ MongoDB less than:		db.collectionName.find({filter}, {$lt: Value})
 Delete Rows:			db.collectionName.remove({filter}) * {key: value}
 
 ## MONGOIMPORT ##
-mongoimport --type csv --headerline --db mflix --collection movies_initial --host "mflix-shard-00-00.hzwoj.mongodb.net:27017,mflix-shard-00-01.hzwoj.mongodb.net:27017,mflix-shard-00-02.hzwoj.mongodb.net:27017" --authenticationDatabase admin --ssl --username analytics --password analytics-password --file movies_initial.csv
+mongoimport --type csv --headerline --db mflix --collection movies_initial --host "mflix-shard-00-00.hzwoj.mongodb.net:27017,mflix-shard-00-01.hzwoj.mongodb.net:27017,mflix-shard-00-02.hzwoj.mongodb.net:27017" --authenticationDatabase admin --ssl --username <username> --password <password> --file movies_initial.csv
