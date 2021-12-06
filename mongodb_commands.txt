@@ -1,0 +1,49 @@
+  Operations      		Commands
+---------------       	     --------------
+Create Database:		use dbName
+Switch Database: 		use dbName
+Show Databases: 		show dbs
+Drop Databases:			db.dropDatabase() * Confirmed the right one before drop.
+
+Create Collections:		db.createCollection('collectionName')
+Show Collections:		show collections
+Drop Collections:		db.collectionName.drop()
+
+
+Insert Rows(Single Data): 	db.collectionName.insert({
+						'name': 'Forid',
+						'lang': 'Bangla'})
+
+Insert Rows(Multiple Data): 	db.collectionName.insertMany([
+						{
+						'name': 'Forid',
+						'lang': 'Bangla'},
+						{
+						'name': 'Tarek',
+						'lang': 'Math'},
+						{
+						'name': 'Ridoy',
+						'lang': 'English'}
+						])
+
+Show collections Data:		db.collectionName.find()
+				db.collectionName.find().pretty()
+				db.collectionName.find().pretty().limit() | limit(5)
+find first matched object:	db.collectionName.findOne({key:value})
+
+Search Data:			db.collectionName.find({key: value}) * You can pass multiple key & value pair
+Count Rows in Collection:	db.collectionName.count()
+Sort Rows:			db.collectionName.find().sort() | sort({key: value}) * You can sort by specific field value
+
+Update a Row in Collection:	db.collectionName.update({key: value}, BSON data) * BSON means {key: value}
+				db.collectionName.update({key: value}, {BSON data}, {upsert: true}) * upsert true means if updated data 												    not found then insert as a new data.
+
+MongoDB increament:		db.collectionName.update({name: 'Forid'}, {$inc: {member_since: 1}})
+MongoDB rename:			db.collectionName.update({name: 'Forid'}, {$rename: {member_since: 1}})
+MongoDB greater than:		db.collectionName.find({filter}, {$gt: Value})
+MongoDB less than:		db.collectionName.find({filter}, {$lt: Value})  
+
+Delete Rows:			db.collectionName.remove({filter}) * {key: value}
+
+# MONGOIMPORT #
+mongoimport --type csv --headerline --db mflix --collection movies_initial --host "mflix-shard-00-00.hzwoj.mongodb.net:27017,mflix-shard-00-01.hzwoj.mongodb.net:27017,mflix-shard-00-02.hzwoj.mongodb.net:27017" --authenticationDatabase admin --ssl --username analytics --password analytics-password --file movies_initial.csv
